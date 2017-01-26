@@ -3,32 +3,43 @@ const Node = require('./node');
 class LinkedList {
     constructor() {
         this._length=0;
-        this.Head=null;
-        this.Tail=null;
+        this._head=null;
+        this._tail=null;
     }
 
     append(data) {
             const elem = new Node(data, null, null);
             if(this._length===0){
-                this.Head=elem;
-                this.Tail=elem;
+                this._head=elem;
+                this._tail=elem;
             }else{
-                this.Tail.next=elem;
-                elem.prev=this.Tail;
-                this.Tail=elem;
+                this._tail.next=elem;
+                elem.prev=this._tail;
+                this._tail=elem;
             }
             this._length++;
     }
 
     head() {
-        return this.Head.data;
+        return this._head.data;
     }
 
     tail() {
-        return this.Tail.data;
+        return this._tail.data;
     }
 
-    at(index) {}
+    at(index) {
+        var CurrentNode=this._head;
+        var length=this._length;
+        var count= 1;
+        if(length>index && index>0){
+        while(count<index){
+            CurrentNode= CurrentNode.next;
+            count++;
+        }}
+        else{ CurrentNode="ERROR";}
+        return CurrentNode.data;
+    }
 
     insertAt(index, data) {}
 
