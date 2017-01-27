@@ -117,23 +117,21 @@ class LinkedList {
     }
 
     reverse() {
-        var toChange=this._head.data;
-        this._head.data=this._tail.data;
-        this._tail.data=toChange;
-        if(this.length>1) {
-            var ToUp = this._head.next;
-            var ToDown = this._tail.prev;
-            var len = this.length - 2;
-            while (len > 1) {
-                var toChange = ToUp.data;
-                ToUp.data = ToDown.data;
-                ToDown.data = toChange;
-                ToUp = ToUp.next;
-                ToDown = ToDown.prev;
-                len = len - 2;
-            }
+        var revNode=this._tail;
+        revNode.next=revNode.prev;
+        revNode.prev=null;
+        var newHead=revNode;
+        var index=0;
+        while(index<this.length-1){
+            revNode=revNode.next;
+            var prev=revNode.prev;
+            revNode.prev=revNode.next;
+            revNode.next=prev;
+            index++;
         }
-
+        this._tail=revNode;
+        this._head=newHead;
+        
         return this;
     }
 
