@@ -43,7 +43,15 @@ class LinkedList {
 
     insertAt(index, data) {}
 
-    isEmpty() {}
+    isEmpty() {
+        var res;
+        if (this._length===0){
+            res=true;
+        }else{
+            res=false;
+        }
+        return res;
+    }
 
     clear() {}
 
