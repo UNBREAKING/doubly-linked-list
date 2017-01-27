@@ -92,7 +92,26 @@ class LinkedList {
         this.length--;
     }
 
-    reverse() {}
+    reverse() {
+        var toChange=this._head.data;
+        this._head.data=this._tail.data;
+        this._tail.data=toChange;
+
+        var ToUp=this._head.next;
+        var ToDown=this._tail.prev;
+           var len=this.length-2;
+           while(len>1) {
+               var toChange = ToUp.data;
+               ToUp.data=ToDown.data;
+               ToDown.data=toChange;
+               ToUp=ToUp.next;
+               ToDown=ToDown.prev;
+               len=len-2;
+           }
+
+
+
+    }
 
     indexOf(data) {
         var CurrentNode=this._head;
