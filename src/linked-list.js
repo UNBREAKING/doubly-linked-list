@@ -54,8 +54,8 @@ class LinkedList {
     }
 
     clear() {
-        this._head=null;
-        this._tail=null;
+        this._head=new Node(null, null, null);
+        this._tail=new Node(null, null, null);
         this.length=0;
     }
 
