@@ -41,7 +41,23 @@ class LinkedList {
         return CurrentNode.data;
     }
 
-    insertAt(index, data) {}
+    insertAt(index, data) {
+        const elem =new Node(this._tail.data,null,null);
+
+        this._tail.next=elem;
+        elem.prev=this._tail;
+        this._tail=elem;
+        var CurrentNode=this._tail.prev;
+        var count=this.length-1;
+        while(count>index){
+            var ExchNode=CurrentNode.prev;
+            CurrentNode.data=ExchNode.data;
+            CurrentNode=CurrentNode.prev;
+            count--;
+        }
+        this.length++;
+        CurrentNode.data=data;
+    }
 
     isEmpty() {
         var res;
@@ -59,7 +75,22 @@ class LinkedList {
         this.length=0;
     }
 
-    deleteAt(index) {}
+    deleteAt(index) {
+        var CurrentNode=this._head;
+        var count=0;
+        while(count<index){
+            CurrentNode=CurrentNode.next;
+            count++;
+        }
+        while(count<this.length-1){
+            CurrentNode.data=CurrentNode.next.data;
+            CurrentNode=CurrentNode.next;
+            count++;
+        }
+        CurrentNode.prev.next=null;
+        this._tail=CurrentNode.prev;
+        this.length--;
+    }
 
     reverse() {}
 
