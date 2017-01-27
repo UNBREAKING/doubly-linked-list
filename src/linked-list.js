@@ -2,14 +2,14 @@ const Node = require('./node');
 
 class LinkedList {
     constructor() {
-        this._length=0;
+        this.length=0;
         this._head=null;
         this._tail=null;
     }
 
     append(data) {
             const elem = new Node(data, null, null);
-            if(this._length===0){
+            if(this.length===0){
                 this._head=elem;
                 this._tail=elem;
             }else{
@@ -17,7 +17,7 @@ class LinkedList {
                 elem.prev=this._tail;
                 this._tail=elem;
             }
-            this._length++;
+            this.length++;
     }
 
     head() {
@@ -30,7 +30,7 @@ class LinkedList {
 
     at(index) {
         var CurrentNode=this._head;
-        var length=this._length;
+        var length=this.length;
         var count= 0;
         if(length>index && index>=0){
         while(count<index){
@@ -45,7 +45,7 @@ class LinkedList {
 
     isEmpty() {
         var res;
-        if (this._length===0){
+        if (this.length===0){
             res=true;
         }else{
             res=false;
@@ -53,7 +53,11 @@ class LinkedList {
         return res;
     }
 
-    clear() {}
+    clear() {
+        this._head=null;
+        this._tail=null;
+        this.length=0;
+    }
 
     deleteAt(index) {}
 
